@@ -17,11 +17,20 @@ class DashboardController extends Controller
         return view('dashboard', ['books' => $books]);
     }
 
-    public function borrow(){
+    public function borrow()
+    {
         $id =auth()->user()->id;
         if(empty($id)){
             return redirect()->route('welcome');
         }
         return view('borrow');
+    }
+
+    public function return(){
+        $id =auth()->user()->id;
+        if(empty($id)){
+            return redirect()->route('welcome');
+        }
+        return view('return');
     }
 }
