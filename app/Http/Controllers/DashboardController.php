@@ -13,8 +13,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $id =auth()->user()->id;
-        if(empty($id)){
+        if(empty(auth()->user()->id)){
             return redirect()->route('welcome');
         }
         $books = Book::all();
@@ -23,8 +22,7 @@ class DashboardController extends Controller
 
     public function borrow()
     {
-        $id =auth()->user()->id;
-        if(empty($id)){
+        if(empty(auth()->user()->id)){
             return redirect()->route('welcome');
         }
         return view('borrow');
@@ -32,8 +30,7 @@ class DashboardController extends Controller
 
     public function return()
     {
-        $id =auth()->user()->id;
-        if(empty($id)){
+        if(empty(auth()->user()->id)){
             return redirect()->route('welcome');
         }
         return view('return');
@@ -41,8 +38,7 @@ class DashboardController extends Controller
 
     public function borrow_book(Request $request)
     {
-        $id =auth()->user()->id;
-        if(empty($id)){
+        if(empty(auth()->user()->id)){
             return redirect()->route('welcome');
         }
         $book = Book::where('isbn', $request->isbn)->first();
@@ -71,8 +67,7 @@ class DashboardController extends Controller
 
     public function return_book(Request $request)
     {
-        $id =auth()->user()->id;
-        if(empty($id)){
+        if(empty(auth()->user()->id)){
             return redirect()->route('welcome');
         }
         $book = Book::where('isbn', $request->isbn)->first();
@@ -114,8 +109,7 @@ class DashboardController extends Controller
     }
 
     public function myaccount(){
-        $id =auth()->user()->id;
-        if(empty($id)){
+        if(empty(auth()->user()->id)){
             return redirect()->route('welcome');
         }
         $accounts = Account::where('student_id', Auth::user()->student_id)->get();
