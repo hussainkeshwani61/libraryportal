@@ -12,5 +12,5 @@ Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register'
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
 Route::get('/borrow', 'App\Http\Controllers\DashboardController@borrow')->name('borrow');
 Route::get('/return', 'App\Http\Controllers\DashboardController@return')->name('return');
-
+Route::post('/borrow-book', 'App\Http\Controllers\DashboardController@borrow_book')->name('borrow-book');
 
