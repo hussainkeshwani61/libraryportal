@@ -12,17 +12,12 @@ use Auth;
 
 class LoginController extends Controller
 {
-    //
-
-    public function login(Request $request){
-        //request->student_id exists
+    public function login(Request $request)
+    {
         if($request->student_id){
-            //Check if user exists
             $user = User::where('student_id', $request->student_id)->first();
             if($user){
-                //Check if password matches
                 if(Hash::check($request->password, $user->password)){
-                    //Login user
                     Auth::login($user);
                     return redirect()->route('dashboard');
                 }else{
@@ -33,12 +28,12 @@ class LoginController extends Controller
             }
         }
         else{
-            //return to welcome page with $new = $request->student_id
             return redirect()->back()->with('error', 'Invalid login details');
         }        
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect()->route('welcome');
     }
