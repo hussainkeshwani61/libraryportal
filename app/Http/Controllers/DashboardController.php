@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
+use Auth;
+use App\Models\Account;
+use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 
 class DashboardController extends Controller
