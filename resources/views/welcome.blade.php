@@ -22,7 +22,24 @@
     <div class="container-fluid h-100">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
     
+            <h1>Library Login</h1>
+            @php 
+                if(isset($_GET['new'])){
+                    $new = $_GET['new'];
+                }
+            @endphp
+            @if(isset($new))
                 <form action="{{ route('register') }}" method="POST">
                     <div class="form-group">
                         <label for="student_id">Please enter a new pin</label>
@@ -36,6 +53,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Register</button>
                 </form>
+                @else
                 <br>
                 <form action="{{ route('login') }}" method="POST">
                     <div class="form-group">
@@ -46,6 +64,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
+            @endif
             </div>
         </div>
     </div>
